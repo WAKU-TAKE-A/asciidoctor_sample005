@@ -1,0 +1,131 @@
+//==========
+// 属性(Attribute)
+//==========
+
+// 文書の情報
+// ・:version-label: を値無しにすることで好みの記述にできます。
+:lang: ja
+:doctype: book
+:author: WAKU-TAKE-A
+:revdate: 2019年10月13日
+:revnumber: 1.0版
+:version-label:
+// ディレクトリやテーマファイルなどの設定
+:imagesdir: ./img
+:pdf-style: my-theme.yml
+// シンタックスハイライトの設定
+// ・Rougeを使います。asciidoctorインストールが必要です
+// ・rougeのスタイルは、https://github.com/jneen/rouge/tree/master/lib/rouge/themes にあります
+// ・デフォルトはgithubです
+:source-highlighter: rouge
+:rouge-style: pastie  
+
+//===========
+// 本文(Body)
+//===========
+
+= CSVから表を作成する
+
+== 概要
+
+AsciiDocで表（テーブル）を作成する詳細は、 https://takumon.github.io/asciidoc-syntax-quick-reference-japanese-translation/#_%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB[こちら] にある説明の通りです。
+
+以下に、簡単に説明します。
+
+== 標準的な書き方の例
+
+記述方法：
+
+....
+[cols="1,1,2", options="header"]
+|===
+|アーティスト
+|トラック
+|ジャンル
+
+|Baauer
+|Harlem Shake
+|Hip Hop
+
+|The Lumineers
+|Ho Hey
+|Folk Rock
+|===
+....
+
+結果の表示:
+
+[cols="1,1,2", options="header"]
+|===
+|アーティスト
+|トラック
+|ジャンル
+
+|Baauer
+|Harlem Shake
+|Hip Hop
+
+|The Lumineers
+|Ho Hey
+|Folk Rock
+|===
+
+CSVデータやファイルから作成するより、セル毎の書式の設定やセルの結合など複雑な表を作成することが可能です。
+
+== CSVデータから
+
+`,(カンマ)` 区切りのデータから表を作成します。見慣れた感じです。
+
+記述方法：
+
+....
+[format="csv", options="header"]
+|===
+アーティスト,トラック,ジャンル
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+|===
+....
+
+結果の表示：
+
+[format="csv", options="header"]
+|===
+アーティスト,トラック,ジャンル
+Baauer,Harlem Shake,Hip Hop
+The Lumineers,Ho Hey,Folk Rock
+|===
+
+== CSVファイルから
+
+CSVファイルから表を作成します。本文と表を分離することができます。CSVはEXCELで編集することも容易です。
+
+記述方法：
+
+image::include_csv.jpg[]
+
+結果の表示：
+
+[format="csv", options="header"]
+|===
+include::Sample005.csv[]
+|===
+
+ちなみに、CSVデータ・ファイルから作成する場合も、`cols="1,1,2"` は利用することが可能です。
+
+== メモ
+
+本サンプルでは、スタイルファイルにおいて以下のように設定し、偶数と奇数の行の色が同じになるように設定しています。
+
+[source, yaml, indent=4]
+----
+table_body:
+  background_color: [255,255,255]
+  stripe_background_color: [255,255,255]
+----
+
+== 本ページについて
+
+本ページはAsciiDocで作成しています。 https://github.com/WAKU-TAKE-A/asciidoctor_sample005[こちら] にサンプルを置いておきます。サンプルは、「 https://waku-take-a.github.io/Visual%2520Studio%2520Code%25E3%2581%258B%25E3%2582%2589PDF%25E3%2582%2592%25E5%2587%25BA%25E5%258A%259B%25E3%2581%2599%25E3%2582%258B.html[Visual Studio CodeからPDFを出力する] 」の方法で比較的簡単にPDFやHTMLにすることができます。
+
+AsciiDoc_Sample終わり
