@@ -7,19 +7,21 @@
 :lang: ja
 :doctype: book
 :author: WAKU-TAKE-A
-:revdate: 2019年11月3日
-:revnumber: 1.2版
+:revdate: 2022年7月11日
+:revnumber: 1.3版
 :version-label:
 // ディレクトリやテーマファイルなどの設定
-:pdf-style: my-theme.yml
 :imagesdir: ./img
-//:pdf-fontsdir: ../fonts
+:pdf-themesdir: ./
+:pdf-theme: my-theme.yml
 // シンタックスハイライトの設定
 // ・Rougeを使います。asciidoctorインストールが必要です
 // ・rougeのスタイルは、https://github.com/jneen/rouge/tree/master/lib/rouge/themes にあります
 // ・デフォルトはgithubです
 :source-highlighter: rouge
-:rouge-style: pastie  
+:rouge-style: pastie
+// 表の奇数・偶数行の設定
+:table-stripes: odd
 
 //===========
 // 本文(Body)
@@ -48,6 +50,10 @@ AsciiDocで表（テーブル）を作成する詳細は、 https://takumon.gith
 |Harlem Shake
 |Hip Hop
 
+|Baauer
+|Harlem Shake
+|Hip Hop
+
 |The Lumineers
 |Ho Hey
 |Folk Rock
@@ -61,6 +67,10 @@ AsciiDocで表（テーブル）を作成する詳細は、 https://takumon.gith
 |アーティスト
 |トラック
 |ジャンル
+
+|Baauer
+|Harlem Shake
+|Hip Hop
 
 |Baauer
 |Harlem Shake
@@ -116,13 +126,22 @@ include::Sample005.csv[]
 
 == メモ
 
-本サンプルでは、スタイルファイルにおいて以下のように設定し、偶数と奇数の行の色が同じになるように設定しています。
+偶数と奇数の行の色の設定は以下のように行います。
+
+まず、adocファイルの先頭で以下のような属性を追記します。（none、even、odd、all、hoverなどがあります。 https://docs.asciidoctor.org/asciidoc/latest/tables/striping/[参考] ）
+
+----
+:table-stripes: odd
+----
+
+次に、スタイルファイルで所望の色を設定します。
 
 [source, yaml, indent=4]
 ----
-table_body:
-  background_color: [255,255,255]
-  stripe_background_color: [255,255,255]
+table:
+  body:
+    background-color: #FFFFFF
+    stripe-background-color: #F0F0F0
 ----
 
 == 本ページについて
